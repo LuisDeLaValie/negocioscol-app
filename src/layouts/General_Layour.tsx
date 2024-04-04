@@ -1,7 +1,7 @@
 import React, { PropsWithChildren } from "react";
 import { SafeAreaView, StatusBar, useColorScheme } from "react-native";
 import { Colors } from "react-native/Libraries/NewAppScreen";
-import { AppBar } from "./AppBar";
+import { AppBar } from "../components/AppBar";
 
 type Props = PropsWithChildren<{}>;
 
