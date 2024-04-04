@@ -1,6 +1,8 @@
 import React from "react";
 import {
   Alert,
+  Dimensions,
+  Image,
   StyleSheet,
   Text,
   TextInput,
@@ -9,29 +11,33 @@ import {
 } from "react-native";
 import { color } from "../utils/colors_app";
 
-export const AppBar = () => {
+import second, { Appbar, Avatar } from "react-native-paper";
+
+export const AppBar = (): React.JSX.Element => {
   return (
-    <View style={styles.Appbar}>
-      <TouchableHighlight
+    <Appbar style={styles.Appbar}>
+      <Appbar.Action
         style={styles.menu}
-        activeOpacity={0.6}
-        underlayColor="#DDDDDD"
+        icon="menu"
         onPress={() => Alert.alert("Menu!")}
-      >
-        <Text>avatr</Text>
-      </TouchableHighlight>
-      <View>
-        <TextInput style={styles.buscador} placeholder="Buscar" />
-      </View>
+      />
+      <TextInput style={styles.buscador} placeholder="Buscar" />
+
       <TouchableHighlight
-        style={styles.abatar}
+        style={styles.avatar}
         activeOpacity={0.6}
         underlayColor="#DDDDDD"
         onPress={() => Alert.alert("Perfil!")}
       >
-        <Text>avatar</Text>
+        <Avatar.Image
+          style={styles.avatar}
+          size={styles.avatar.height}
+          source={{
+            uri: "https://i.pinimg.com/originals/08/af/0e/08af0e9cb70920f9a9460e1db64b3771.jpg",
+          }}
+        />
       </TouchableHighlight>
-    </View>
+    </Appbar>
   );
 };
 
@@ -42,6 +48,7 @@ const styles = StyleSheet.create({
     backgroundColor: color.hunyandi_yellow,
     color: "#ffff",
     flexDirection: "row",
+    alignContent: "space-around",
   },
   buscador: {
     marginHorizontal: 10,
@@ -49,18 +56,16 @@ const styles = StyleSheet.create({
     borderRadius: 100,
     paddingHorizontal: 10,
     paddingVertical: 5,
-    width: 240,
+    width: Dimensions.get("window").width * 0.6,
   },
-  abatar: {
+  avatar: {
     borderRadius: 100,
     width: 40,
     height: 40,
-    backgroundColor: "#df2020",
   },
   menu: {
     borderRadius: 10,
     width: 40,
     height: 40,
-    backgroundColor: "#1a7fbf",
   },
 });
