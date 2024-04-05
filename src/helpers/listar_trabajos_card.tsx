@@ -3,8 +3,7 @@ import { Negocio } from "../models/presentar_negocio";
 export default async function listarDataTrabajos(): Promise<Negocio[]> {
   console.log("inicio promesa");
 
-  await setTimeout(() => {}, 50000);
-
+  
   console.log("finalizar promesa");
   return [
     {

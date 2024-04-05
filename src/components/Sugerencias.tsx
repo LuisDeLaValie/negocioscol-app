@@ -8,12 +8,10 @@ interface Props {
   getdata: Promise<Negocio[]>;
 }
 export const Sugerencias = ({ titulo, getdata }: Props): React.JSX.Element => {
-  console.log("Entrando a Sugerencias");
-
   return (
     <View>
       <Text>{titulo}</Text>
-      <Suspense fallback={<Text>Hola</Text>}>
+      <Suspense fallback={<Text>Hola que estas haciendo</Text>}>
         <Lista promise={getdata} />
       </Suspense>
     </View>
@@ -28,22 +26,11 @@ const Lista = ({
   const [data, setData] = useState<Negocio[]>();
 
   useEffect(() => {
-    console.log("useEffect");
-
-    promise
-      .then((value) => {
-        setData(value);
-        console.log("todo bien");
-      })
-      .catch((e) => {
-        console.log("Algo salio mal");
-      })
-      .finally(() => {
-        console.log("promisea terminada");
-      });
+    promise.then((value) => {
+      setData(value);
+    });
   }, [promise]);
 
-  console.log("Entrando a Lista");
   return (
     <FlatList
       horizontal={true}

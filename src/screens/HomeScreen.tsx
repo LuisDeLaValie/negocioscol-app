@@ -12,6 +12,8 @@ export const HomeScreen = () => {
     { titulo: "Lo Nuevo", data: listarDataTrabajos() },
     { titulo: "Lo mas Usado", data: listarDataTrabajos() },
     { titulo: "Mas Interesante", data: listarDataTrabajos() },
+    { titulo: "Promociones", data: listarDataTrabajos() },
+    { titulo: "Mas Interesante", data: listarDataTrabajos() },
   ];
 
   return (
