@@ -4,8 +4,6 @@ import { GeneralLayour } from "../layouts/General_Layour";
 import listarDataTrabajos from "../helpers/listar_trabajos_card";
 import { Sugerencias } from "../components/Sugerencias";
 import { FlatList, StyleSheet, View } from "react-native";
-import { Negocio } from "../models/presentar_negocio";
-import { Item } from "react-native-paper/lib/typescript/components/Drawer/Drawer";
 
 export const HomeScreen = () => {
   const sug = [

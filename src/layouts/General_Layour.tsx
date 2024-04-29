@@ -1,5 +1,5 @@
 import React, { PropsWithChildren } from "react";
-import { SafeAreaView, StatusBar, useColorScheme } from "react-native";
+import { SafeAreaView, StatusBar, View, useColorScheme } from "react-native";
 import { Colors } from "react-native/Libraries/NewAppScreen";
 import { AppBar } from "../components/AppBar";
 
@@ -16,7 +16,7 @@ export const GeneralLayour = ({ children }: Props): React.JSX.Element => {
     <SafeAreaView style={backgroundStyle}>
       <StatusBar translucent={false} />
       <AppBar />
-      {children}
+      <View>{children}</View>
     </SafeAreaView>
   );
 };
