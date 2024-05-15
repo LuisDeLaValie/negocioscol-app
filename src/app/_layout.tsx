@@ -2,10 +2,11 @@ import React, { PropsWithChildren } from "react";
 import { SafeAreaView, StatusBar, View, useColorScheme } from "react-native";
 import { Colors } from "react-native/Libraries/NewAppScreen";
 import { AppBar } from "../components/AppBar";
+import { Slot } from "expo-router";
 
 type Props = PropsWithChildren<{}>;
 
-export const GeneralLayour = ({ children }: Props): React.JSX.Element => {
+const layout = () => {
   const isDarkMode = useColorScheme() === "dark";
 
   const backgroundStyle = {
@@ -16,7 +17,9 @@ export const GeneralLayour = ({ children }: Props): React.JSX.Element => {
     <SafeAreaView style={backgroundStyle}>
       <StatusBar translucent={false} />
       <AppBar />
-      <View>{children}</View>
+      <Slot />
     </SafeAreaView>
   );
 };
+
+export default layout;

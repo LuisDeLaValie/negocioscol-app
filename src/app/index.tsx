@@ -1,11 +1,12 @@
-import React, { Suspense, useEffect, useState } from "react";
-import { GeneralLayour } from "../layouts/General_Layour";
-
-import listarDataTrabajos from "../helpers/listar_trabajos_card";
-import { Sugerencias } from "../components/Sugerencias";
+import { Link } from "expo-router";
+import React from "react";
 import { FlatList, StyleSheet, View } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
+import { Sugerencias } from "../components/Sugerencias";
+import listarDataTrabajos from "../helpers/listar_trabajos_card";
 
-export const HomeScreen = () => {
+const PageHome = () => {
+
   const sug = [
     { titulo: "Lo Nuevo", data: listarDataTrabajos() },
     { titulo: "Lo mas Usado", data: listarDataTrabajos() },
@@ -15,8 +16,7 @@ export const HomeScreen = () => {
   ];
 
   return (
-    <GeneralLayour>
-      <View style={styles.cuntent}>
+    <View style={styles.cuntent}>
         <FlatList
           data={sug}
           renderItem={(item) => (
@@ -26,9 +26,12 @@ export const HomeScreen = () => {
           )}
         />
       </View>
-    </GeneralLayour>
   );
 };
+
+export default PageHome;
+
+
 
 const styles = StyleSheet.create({
   cuntent: {

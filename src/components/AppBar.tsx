@@ -16,11 +16,7 @@ import second, { Appbar, Avatar } from "react-native-paper";
 export const AppBar = (): React.JSX.Element => {
   return (
     <Appbar style={styles.Appbar}>
-      <Appbar.Action
-        style={styles.menu}
-        icon="menu"
-        onPress={() => Alert.alert("Menu!")}
-      />
+    
       <TextInput style={styles.buscador} placeholder="Buscar" />
 
       <TouchableHighlight
@@ -48,7 +44,7 @@ const styles = StyleSheet.create({
     backgroundColor: color.hunyandi_yellow,
     color: "#ffff",
     flexDirection: "row",
-    alignContent: "space-around",
+    justifyContent: "flex-end",
   },
   buscador: {
     marginHorizontal: 10,
