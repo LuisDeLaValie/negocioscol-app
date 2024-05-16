@@ -34,7 +34,7 @@ const layout = () => {
               style={styles.avatar}
               size={styles.avatar.height}
               source={{
-                uri: "https://i.pinimg.com/originals/08/af/0e/08af0e9cb70920f9a9460e1db64b3771.jpg",
+                uri: "https://avatars.githubusercontent.com/u/34776956?v=4",
               }}
             />
           ),

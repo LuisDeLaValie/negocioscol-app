@@ -1,10 +1,11 @@
 import React from "react";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 import { Tabs } from "expo-router";
+import { color } from "../../utils/colors_app";
 
 const _layout = () => {
   return (
-    <Tabs screenOptions={{ tabBarActiveTintColor: "blue" }}>
+    <Tabs screenOptions={{ tabBarActiveTintColor: color.cambridge_blue }}>
       <Tabs.Screen
         name="index"
         options={{
@@ -30,6 +31,7 @@ const _layout = () => {
         options={{
           title: "Settings",
           headerShown: false,
+
           tabBarIcon: ({ color }) => (
             <FontAwesome size={28} name="cog" color={color} />
           ),
