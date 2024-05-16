@@ -1,8 +1,19 @@
 import React, { PropsWithChildren } from "react";
-import { SafeAreaView, StatusBar, View, useColorScheme } from "react-native";
+import {
+  Alert,
+  Dimensions,
+  SafeAreaView,
+  StatusBar,
+  StyleSheet,
+  TouchableHighlight,
+  View,
+  useColorScheme,
+} from "react-native";
 import { Colors } from "react-native/Libraries/NewAppScreen";
 import { AppBar } from "../components/AppBar";
-import { Slot } from "expo-router";
+import { Slot, Stack } from "expo-router";
+import { Avatar } from "react-native-paper";
+import { color } from "../utils/colors_app";
 
 type Props = PropsWithChildren<{}>;
 
@@ -14,12 +25,54 @@ const layout = () => {
   };
 
   return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar translucent={false} />
-      <AppBar />
-      <Slot />
-    </SafeAreaView>
+    <Stack>
+      <Stack.Screen
+        name="(tabs)"
+        options={{
+          headerRight: (pop) => (
+            <Avatar.Image
+              style={styles.avatar}
+              size={styles.avatar.height}
+              source={{
+                uri: "https://i.pinimg.com/originals/08/af/0e/08af0e9cb70920f9a9460e1db64b3771.jpg",
+              }}
+            />
+          ),
+          headerStyle: styles.Appbar,
+          headerTitle: "",
+        }}
+      />
+    </Stack>
   );
 };
 
 export default layout;
+
+const styles = StyleSheet.create({
+  Appbar: {
+    paddingHorizontal: 10,
+    paddingVertical: 10,
+    backgroundColor: color.hunyandi_yellow,
+    color: "#ffff",
+    flexDirection: "row",
+    justifyContent: "flex-end",
+  },
+  buscador: {
+    marginHorizontal: 10,
+    backgroundColor: color.linen,
+    borderRadius: 100,
+    paddingHorizontal: 10,
+    paddingVertical: 5,
+    width: Dimensions.get("window").width * 0.6,
+  },
+  avatar: {
+    borderRadius: 100,
+    width: 40,
+    height: 40,
+  },
+  menu: {
+    borderRadius: 10,
+    width: 40,
+    height: 40,
+  },
+});

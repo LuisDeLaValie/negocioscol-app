@@ -2,8 +2,8 @@ import { Link } from "expo-router";
 import React from "react";
 import { FlatList, StyleSheet, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { Sugerencias } from "../components/Sugerencias";
-import listarDataTrabajos from "../helpers/listar_trabajos_card";
+import listarDataTrabajos from "../../helpers/listar_trabajos_card";
+import { Sugerencias } from "../../components/Sugerencias";
 
 const PageHome = () => {
 
