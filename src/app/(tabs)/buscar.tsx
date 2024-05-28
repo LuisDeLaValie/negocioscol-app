@@ -1,42 +1,60 @@
-import { useLocalSearchParams } from "expo-router";
+import { router, useLocalSearchParams } from "expo-router";
 import { useEffect, useState } from "react";
 import { View, Text, FlatList, Alert } from "react-native";
 import { Divider, IconButton, List, TextInput } from "react-native-paper";
+
 import {
-  busqueda,
-  isBuscarNegocio,
-  isBuscarProducto,
-  isBuscarServicio,
-  resultadoBusqueda,
-} from "../../models/buscar_negocias";
-import { buscar } from "../../helpers/buscar_tabajos";
+  Buscar,
+  SearchResult,
+  isResultNegocio,
+  isResultProducto,
+  isResultServicio,
+} from "../../helpers/buscar_tabajos";
 
 const settings = () => {
   const { id } = useLocalSearchParams();
 
   const [search, setSearch] = useState<string>("");
   const [filtro, setfiltro] = useState<number[]>([0, 1, 2]);
-  const [busqueda, setbusqueda] = useState<busqueda>([]);
+  const [busqueda, setbusqueda] = useState<SearchResult[]>([]);
 
   useEffect(() => {
-    const res = buscar(search, filtro);
-    setbusqueda(res);
+    // const res = buscar(search, filtro);
+    Buscar(search).then((val) => setbusqueda(val));
+    // setbusqueda(res);
   }, [search, filtro]);
 
-  const renderItem = ({ item }: { item: resultadoBusqueda }) => {
-    if (isBuscarNegocio(item)) {
-      return <List.Item title={item.negocio} onPress={()=>Alert.alert("negocio")} />;
-    }
-
-    if (isBuscarProducto(item)) {
+  const renderItem = ({ item }: { item: SearchResult }) => {
+    if (isResultProducto(item)) {
+      console.log("busqueda es Produto");
       return (
-        <List.Item title={item.producto} description={`\t en ${item.negocio}`} onPress={()=>Alert.alert("negocio")} />
+        <List.Item
+          title={item.Nombre}
+          description={`\t en ${item.Negocio}`}
+          onPress={() => router.push(`/negocios/${item.Id_Negocio}`)}
+        />
       );
     }
 
-    if (isBuscarServicio(item)) {
+    if (isResultServicio(item)) {
+      console.log("busqueda es Servicio");
       return (
-        <List.Item title={item.servicio} description={`\t en ${item.negocio}`} onPress={()=>Alert.alert("negocio")} />
+        <List.Item
+          title={item.Nombre}
+          description={`\t en ${item.Negocio}`}
+          onPress={() => router.push(`/negocios/${item.Id_Negocio}`)}
+        />
+      );
+    }
+
+    if (isResultNegocio(item)) {
+      console.log("busqueda es Negocio");
+
+      return (
+        <List.Item
+          title={item.Negocio}
+          onPress={() => router.push(`/negocios/${item.Id_Negocio}`)}
+        />
       );
     }
   };

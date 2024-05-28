@@ -2,9 +2,22 @@ import { useLocalSearchParams } from "expo-router";
 import { View, Text, StyleSheet, Dimensions, Alert } from "react-native";
 import { Avatar, Divider, FAB, IconButton, List } from "react-native-paper";
 import { color } from "../../utils/colors_app";
+import { useEffect, useState } from "react";
+import Usuario from "../../models/usuario";
+import getUserApi from "../../helpers/getUserApi";
 
 const settings = () => {
   const { id } = useLocalSearchParams();
+  const [user, setuser] = useState<Usuario>();
+
+  const getUser = async () => {
+    const userr = await getUserApi(2);
+    setuser(userr);
+  };
+
+  useEffect(() => {
+    getUser();
+  },[]);
   return (
     <>
       <View
@@ -30,12 +43,12 @@ const settings = () => {
           style={styles.avatar}
           size={styles.avatar.height}
           source={{
-            uri: "https://avatars.githubusercontent.com/u/34776956?v=4",
+            uri: user?.Imagen,
           }}
         />
         <List.Item
           title="nombre"
-          description="Luis Emilio Partida"
+          description={user?.Nombre}
           left={(props) => <List.Icon {...props} icon="account" />}
           right={(props) => (
             <IconButton icon="pencil" onPress={() => Alert.alert("Pressed")} />
@@ -43,7 +56,7 @@ const settings = () => {
         />
         <List.Item
           title="correo"
-          description="TDTxLE@gmail.com"
+          description={user?.Correo}
           left={(props) => <List.Icon {...props} icon="email" />}
           right={(props) => (
             <IconButton icon="pencil" onPress={() => Alert.alert("Pressed")} />

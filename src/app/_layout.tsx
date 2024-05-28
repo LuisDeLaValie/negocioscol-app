@@ -1,4 +1,4 @@
-import React, { PropsWithChildren } from "react";
+import React, { PropsWithChildren, useEffect, useState } from "react";
 import {
   Alert,
   Dimensions,
@@ -14,6 +14,8 @@ import { AppBar } from "../components/AppBar";
 import { Slot, Stack } from "expo-router";
 import { Avatar } from "react-native-paper";
 import { color } from "../utils/colors_app";
+import Usuario from "../models/usuario";
+import getUserApi from "../helpers/getUserApi";
 
 type Props = PropsWithChildren<{}>;
 
@@ -24,24 +26,36 @@ const layout = () => {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
   };
 
+  const [user, setuser] = useState<Usuario>();
+
+  const getUser = async () => {
+    const userr = await getUserApi(2);
+    setuser(userr);
+  };
+
+  useEffect(() => {
+    getUser();
+  }, []);
+
   return (
-    <Stack>
-      <Stack.Screen
-        name="(tabs)"
-        options={{
-          headerRight: (pop) => (
-            <Avatar.Image
-              style={styles.avatar}
-              size={styles.avatar.height}
-              source={{
-                uri: "https://avatars.githubusercontent.com/u/34776956?v=4",
-              }}
-            />
-          ),
-          headerStyle: styles.Appbar,
-          headerTitle: "",
-        }}
-      />
+    <Stack
+      screenOptions={{
+        headerRight: (pop) => (
+          <Avatar.Image
+            style={styles.avatar}
+            size={styles.avatar.height}
+            source={{
+              uri: user?.Imagen,
+            }}
+          />
+        ),
+
+        headerStyle: styles.Appbar,
+        headerTitle: "",
+      }}
+    >
+      <Stack.Screen name="(tabs)" />
+      <Stack.Screen name="negocios" />
     </Stack>
   );
 };

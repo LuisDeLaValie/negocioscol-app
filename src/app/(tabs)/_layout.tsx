@@ -6,7 +6,7 @@ import { color } from "../../utils/colors_app";
 const _layout = () => {
   return (
     <Tabs screenOptions={{ tabBarActiveTintColor: color.cambridge_blue }}>
-      {/* <Tabs.Screen
+      <Tabs.Screen
         name="index"
         options={{
           headerShown: false,
@@ -15,7 +15,7 @@ const _layout = () => {
             <FontAwesome size={28} name="home" color={color} />
           ),
         }}
-      /> */}
+      />
       <Tabs.Screen
         name="buscar"
         options={{
@@ -26,8 +26,9 @@ const _layout = () => {
           ),
         }}
       />
-     {/*  <Tabs.Screen
+      <Tabs.Screen
         name="settings"
+        // initialParams={'id':2}
         options={{
           title: "Settings",
           headerShown: false,
@@ -36,7 +37,7 @@ const _layout = () => {
             <FontAwesome size={28} name="cog" color={color} />
           ),
         }}
-      /> */}
+      />
     </Tabs>
   );
 };
