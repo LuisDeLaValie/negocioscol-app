@@ -1,10 +1,20 @@
 import { useLocalSearchParams } from "expo-router";
-import { View, Text, StyleSheet, Dimensions, Alert } from "react-native";
-import { Avatar, Divider, FAB, IconButton, List } from "react-native-paper";
+import { View, StyleSheet, Dimensions, Alert } from "react-native";
+import {
+  Avatar,
+  Dialog,
+  Divider,
+  FAB,
+  IconButton,
+  List,
+  Portal,
+  TextInput,
+} from "react-native-paper";
 import { color } from "../../utils/colors_app";
 import { useEffect, useState } from "react";
 import Usuario from "../../models/usuario";
 import getUserApi from "../../helpers/getUserApi";
+import EditarAtributos from "../../components/EditarAtributos";
 
 const settings = () => {
   const { id } = useLocalSearchParams();
@@ -15,9 +25,33 @@ const settings = () => {
     setuser(userr);
   };
 
+  const actualizar = () => {
+    const myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+
+    const raw = JSON.stringify({
+      ...user,
+    });
+
+    const requestOptions = {
+      method: "PUT",
+      headers: myHeaders,
+      body: raw,
+      redirect: "follow",
+    };
+
+    fetch(
+      "https://api-negosioscol-production.up.railway.app/api/usuarios/1",
+      requestOptions
+    )
+      .then((response) => response.text())
+      .then((result) => console.log(result))
+      .catch((error) => console.error(error));
+  };
+
   useEffect(() => {
     getUser();
-  },[]);
+  }, []);
   return (
     <>
       <View
@@ -35,7 +69,7 @@ const settings = () => {
         >
           <IconButton
             icon="content-save-edit"
-            onPress={() => Alert.alert("Pressed")}
+            onPress={() => actualizar()}
           />
         </View>
 
@@ -46,30 +80,33 @@ const settings = () => {
             uri: user?.Imagen,
           }}
         />
-        <List.Item
-          title="nombre"
-          description={user?.Nombre}
-          left={(props) => <List.Icon {...props} icon="account" />}
-          right={(props) => (
-            <IconButton icon="pencil" onPress={() => Alert.alert("Pressed")} />
-          )}
+
+        <EditarAtributos
+          titulo="nombre"
+          valor={user?.Nombre}
+          icono="account"
+          change={(val) => {
+            setuser({ ...user!, Nombre: val });
+          }}
         />
-        <List.Item
-          title="correo"
-          description={user?.Correo}
-          left={(props) => <List.Icon {...props} icon="email" />}
-          right={(props) => (
-            <IconButton icon="pencil" onPress={() => Alert.alert("Pressed")} />
-          )}
+        <EditarAtributos
+          titulo="correo"
+          valor={user?.Correo}
+          icono="email"
+          change={(val) => {
+            setuser({ ...user!, Correo: val });
+          }}
         />
-        <List.Item
-          title="contraseña"
-          description="***********"
-          left={(props) => <List.Icon {...props} icon="lock" />}
-          right={(props) => (
-            <IconButton icon="pencil" onPress={() => Alert.alert("Pressed")} />
-          )}
+
+        <EditarAtributos
+          titulo="contraseña"
+          valor={""}
+          icono="lock"
+          change={(val) => {
+            setuser({ ...user!, Correo: "" });
+          }}
         />
+
         <Divider />
       </View>
       <FAB
@@ -78,6 +115,15 @@ const settings = () => {
         style={styles.fab}
         onPress={() => console.log("Pressed")}
       />
+
+      {/* <Portal>
+        <Dialog visible={true} onDismiss={() => {}}>
+          <Dialog.Title>This is a title</Dialog.Title>
+          <Dialog.Content>
+            <TextInput label="Email" value={""} onChangeText={(text) => {}} />{" "}
+          </Dialog.Content>
+        </Dialog>
+      </Portal> */}
     </>
   );
 };
