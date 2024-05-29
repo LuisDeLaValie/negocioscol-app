@@ -2,7 +2,7 @@ import Usuario from "../models/usuario";
 
 export default async function getUserApi(id: number): Promise<Usuario> {
   try {
-    const response = await fetch(`http://192.168.1.79:8081/api/usuarios/1`);
+    const response = await fetch(`https://api-negosioscol-production.up.railway.app/api/usuarios/1`);
     const result = await response.text();
     console.log('getUserApi');
     

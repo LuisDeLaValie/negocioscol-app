@@ -17,7 +17,7 @@ export const Buscar = async (buscar: string): Promise<SearchResult[]> => {
     };
 
     var respinse = await fetch(
-      `http://192.168.1.79:8081/api/buscar?buscar=${buscar}`,
+      `https://api-negosioscol-production.up.railway.app/api/buscar?buscar=${buscar}`,
       requestOptions
     );
     var data = await respinse.text();

@@ -49,19 +49,19 @@ export const GetNegocio = async (id: number): Promise<Negocio> => {
     };
 
     var responseNegocio = await fetch(
-      `http://192.168.1.79:8081/api/negocios/${id}`,
+      `https://api-negosioscol-production.up.railway.app/api/negocios/${id}`,
       requestOptions
     );
     var negocio = JSON.parse(await responseNegocio.text());
 
     var responseProductos = await fetch(
-      `http://192.168.1.79:8081/api/negocios/productos/${id}`,
+      `https://api-negosioscol-production.up.railway.app/api/negocios/productos/${id}`,
       requestOptions
     );
     var producto = JSON.parse(await responseProductos.text());
 
     var responServicios = await fetch(
-      `http://192.168.1.79:8081/api/negocios/servisios/${id}`,
+      `https://api-negosioscol-production.up.railway.app/api/negocios/servisios/${id}`,
       requestOptions
     );
     var servicios = JSON.parse(await responServicios.text());
