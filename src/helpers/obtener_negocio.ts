@@ -67,7 +67,6 @@ export const GetNegocio = async (id: number): Promise<Negocio> => {
     var servicios = JSON.parse(await responServicios.text());
 
     var respuesta = { ...negocio, Productos: producto, Servicios: servicios };
-    console.log(respuesta);
     return respuesta;
   } catch (error) {
     console.error(error);

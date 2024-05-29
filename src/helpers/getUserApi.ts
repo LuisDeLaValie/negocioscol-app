@@ -4,7 +4,6 @@ export default async function getUserApi(id: number): Promise<Usuario> {
   try {
     const response = await fetch(`https://api-negosioscol-production.up.railway.app/api/usuarios/1`);
     const result = await response.text();
-    console.log('getUserApi');
     
     return JSON.parse(result);
   } catch (error) {

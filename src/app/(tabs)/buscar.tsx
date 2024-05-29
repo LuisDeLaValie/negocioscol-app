@@ -26,7 +26,6 @@ const settings = () => {
 
   const renderItem = ({ item }: { item: SearchResult }) => {
     if (isResultProducto(item)) {
-      console.log("busqueda es Produto");
       return (
         <List.Item
           title={item.Nombre}
@@ -37,7 +36,6 @@ const settings = () => {
     }
 
     if (isResultServicio(item)) {
-      console.log("busqueda es Servicio");
       return (
         <List.Item
           title={item.Nombre}
@@ -48,7 +46,6 @@ const settings = () => {
     }
 
     if (isResultNegocio(item)) {
-      console.log("busqueda es Negocio");
 
       return (
         <List.Item

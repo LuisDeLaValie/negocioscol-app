@@ -21,7 +21,6 @@ export const Buscar = async (buscar: string): Promise<SearchResult[]> => {
       requestOptions
     );
     var data = await respinse.text();
-    console.log(data);
     return JSON.parse(data);
   } catch (error) {
     console.error(error);

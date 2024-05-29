@@ -1,18 +1,38 @@
 import { useLocalSearchParams } from "expo-router";
 import React, { useEffect, useState } from "react";
 import { GetNegocio, Negocio } from "../../helpers/obtener_negocio";
-import { Dimensions, Image, Text, View } from "react-native";
-import { SegmentedButtons } from "react-native-paper";
+import { ActivityIndicator, Dimensions, Image, Text, View } from "react-native";
 import TabBarView from "../../components/TabBarView";
 
 const NegocioPage = () => {
   const { negocios } = useLocalSearchParams();
   const [Negocio, setNegocio] = useState<Negocio>();
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    GetNegocio(Number(negocios)).then((val) => setNegocio(val));
+    GetNegocio(Number(negocios))
+      .then((val) => {
+        setNegocio(val);
+        setLoading(false);
+      })
+      .catch((val) => {
+        setLoading(false);
+      });
   }, []);
 
+  if (loading) {
+    return (
+      <View
+        style={{
+          display: "flex",
+          justifyContent:'center',
+          height: Dimensions.get("window").height,
+        }}
+      >
+        <ActivityIndicator animating={true} size={100}  color={"#84A59D"}/>
+      </View>
+    );
+  }
   return (
     <View>
       <View style={{ display: "flex" }}>
