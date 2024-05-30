@@ -9,12 +9,13 @@ import {
   View,
 } from "react-native";
 import { Negocio } from "../models/presentar_negocio";
+import { router } from "expo-router";
 
 export const CardNegocio = (negocio: Negocio) => {
   return (
     <TouchableHighlight
       style={styles.card}
-      onPress={() => Alert.alert("carta: " + negocio.nombre)}
+      onPress={() => router.push(`/negocios/${negocio.id}`)}
     >
       <ImageBackground
         style={styles.cardBackground}

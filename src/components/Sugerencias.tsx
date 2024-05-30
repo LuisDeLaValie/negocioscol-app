@@ -5,31 +5,25 @@ import { CardNegocio } from "./CardNegocio";
 
 interface Props {
   titulo: string;
-  getdata: Promise<Negocio[]>;
+  getdata: Negocio[];
 }
 export const Sugerencias = ({ titulo, getdata }: Props): React.JSX.Element => {
   return (
     <View>
       <Text>{titulo}</Text>
       <Suspense fallback={<Text>Hola que estas haciendo</Text>}>
-        <Lista promise={getdata} />
+        <Lista datos={getdata} />
       </Suspense>
     </View>
   );
 };
 
-const Lista = ({
-  promise,
-}: {
-  promise: Promise<Negocio[]>;
-}): React.JSX.Element => {
+const Lista = ({ datos }: { datos: Negocio[] }): React.JSX.Element => {
   const [data, setData] = useState<Negocio[]>();
 
   useEffect(() => {
-    promise.then((value) => {
-      setData(value);
-    });
-  }, [promise]);
+    setData(datos);
+  }, [datos]);
 
   return (
     <FlatList
