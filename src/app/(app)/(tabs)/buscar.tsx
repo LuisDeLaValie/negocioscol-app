@@ -9,7 +9,7 @@ import {
   isResultNegocio,
   isResultProducto,
   isResultServicio,
-} from "../../helpers/buscar_tabajos";
+} from "../../../helpers/buscar_tabajos";
 
 const settings = () => {
   const { id } = useLocalSearchParams();

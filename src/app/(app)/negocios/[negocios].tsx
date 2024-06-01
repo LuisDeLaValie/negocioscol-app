@@ -1,8 +1,8 @@
 import { useLocalSearchParams } from "expo-router";
 import React, { useEffect, useState } from "react";
-import { GetNegocio, Negocio } from "../../helpers/obtener_negocio";
+import { GetNegocio, Negocio } from "../../../helpers/obtener_negocio";
 import { ActivityIndicator, Dimensions, Image, Text, View } from "react-native";
-import TabBarView from "../../components/TabBarView";
+import TabBarView from "../../../components/TabBarView";
 
 const NegocioPage = () => {
   const { negocios } = useLocalSearchParams();

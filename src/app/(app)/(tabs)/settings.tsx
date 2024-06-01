@@ -10,12 +10,12 @@ import {
   Portal,
   TextInput,
 } from "react-native-paper";
-import { color } from "../../utils/colors_app";
+import { color } from "../../../utils/colors_app";
 import { useEffect, useState } from "react";
-import Usuario from "../../models/usuario";
-import getUserApi from "../../helpers/getUserApi";
-import EditarAtributos from "../../components/EditarAtributos";
-import { ObtenerSesion, SerrarSesion } from "../../helpers/login";
+import Usuario from "../../../models/usuario";
+import getUserApi from "../../../helpers/getUserApi";
+import EditarAtributos from "../../../components/EditarAtributos";
+import { ObtenerSesion, SerrarSesion } from "../../../helpers/login";
 
 const settings = () => {
   const { id } = useLocalSearchParams();

@@ -80,7 +80,7 @@ function LoginScreen() {
       <Button mode="contained" onPress={handleLogin} style={styles.button}>
         Login
       </Button>
-      <Button onPress={() => router.replace("/login/crear")} style={styles.button}>
+      <Button onPress={() => router.push("/login/crear")} style={styles.button}>
         Soy nuevo
       </Button>
 

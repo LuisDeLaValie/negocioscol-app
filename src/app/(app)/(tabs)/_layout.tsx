@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 import { Tabs, useFocusEffect, useRouter } from "expo-router";
-import { color } from "../../utils/colors_app";
-import { ObtenerSesion } from "../../helpers/login";
+import { color } from "../../../utils/colors_app";
+import { ObtenerSesion } from "../../../helpers/login";
 
 const _layout = () => {
   const router = useRouter();

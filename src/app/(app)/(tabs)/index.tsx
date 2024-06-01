@@ -2,24 +2,24 @@ import { Link } from "expo-router";
 import React, { useEffect, useState } from "react";
 import { FlatList, StyleSheet, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import listarDataTrabajos from "../../helpers/listar_trabajos_card";
-import { Sugerencias } from "../../components/Sugerencias";
+import listarDataTrabajos from "../../../helpers/listar_trabajos_card";
+import { Sugerencias } from "../../../components/Sugerencias";
 import {
   Buscar,
   SearchResult,
   isResultNegocio,
   isResultProducto,
   isResultServicio,
-} from "../../helpers/buscar_tabajos";
+} from "../../../helpers/buscar_tabajos";
 import {
   BuscarNegocio,
   BuscarProducto,
   BuscarServicio,
-} from "../../models/buscar_negocias";
-import NegocioSearch from "../../models/Negocio";
-import ProductoSearch from "../../models/Producto";
-import ServicioSearch from "../../models/servicios";
-import { Negocio } from "../../models/presentar_negocio";
+} from "../../../models/buscar_negocias";
+import NegocioSearch from "../../../models/Negocio";
+import ProductoSearch from "../../../models/Producto";
+import ServicioSearch from "../../../models/servicios";
+import { Negocio } from "../../../models/presentar_negocio";
 
 interface dasboard {
   titulo: string;
