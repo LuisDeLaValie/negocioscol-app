@@ -90,6 +90,7 @@ const PageHome = () => {
     <View style={styles.cuntent}>
       <FlatList
         data={resultados}
+        // keyExtractor={({ titulo }) => titulo}
         renderItem={({ item }) => {
           return (
             <View style={styles.sugerencia}>

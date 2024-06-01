@@ -24,7 +24,7 @@ export const CardNegocio = (negocio: Negocio) => {
         // overlayColor="rgba(255, 255, 255, 0.5)"
       >
         <View style={styles.cardContent}>
-          <Image style={styles.perfil} source={{ uri: negocio.perfil }} />
+          {/* <Image style={styles.perfil} source={{ uri: negocio.perfil }} /> */}
           <Text style={styles.titulo}>{negocio.nombre}</Text>
         </View>
       </ImageBackground>

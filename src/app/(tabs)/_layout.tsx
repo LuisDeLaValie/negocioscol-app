@@ -1,9 +1,18 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
-import { Tabs } from "expo-router";
+import { Tabs, useFocusEffect, useRouter } from "expo-router";
 import { color } from "../../utils/colors_app";
+import { ObtenerSesion } from "../../helpers/login";
 
 const _layout = () => {
+  const router = useRouter();
+  useFocusEffect(() => {
+    ObtenerSesion().then((user) => {
+      if (!user) {
+        router.replace("/login");
+      }
+    });
+  });
   return (
     <Tabs screenOptions={{ tabBarActiveTintColor: color.cambridge_blue }}>
       <Tabs.Screen

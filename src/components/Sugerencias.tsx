@@ -30,7 +30,7 @@ const Lista = ({ datos }: { datos: Negocio[] }): React.JSX.Element => {
       horizontal={true}
       data={data}
       renderItem={({ item }) => <CardNegocio {...item} />}
-      keyExtractor={(item) => item.id}
+      // keyExtractor={({id}) => item.id}
     />
   );
 };

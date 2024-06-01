@@ -16,6 +16,7 @@ import { Avatar } from "react-native-paper";
 import { color } from "../utils/colors_app";
 import Usuario from "../models/usuario";
 import getUserApi from "../helpers/getUserApi";
+import { ObtenerSesion } from "../helpers/login";
 
 type Props = PropsWithChildren<{}>;
 
@@ -29,8 +30,11 @@ const layout = () => {
   const [user, setuser] = useState<Usuario>();
 
   const getUser = async () => {
-    const userr = await getUserApi(2);
-    setuser(userr);
+    const user = await ObtenerSesion();
+    if (user) {
+      const userr = await getUserApi(Number(user));
+      setuser(userr);
+    }
   };
 
   useEffect(() => {
@@ -39,6 +43,7 @@ const layout = () => {
 
   return (
     <Stack
+      initialRouteName=""
       screenOptions={{
         headerRight: (pop) => (
           <Avatar.Image
@@ -56,6 +61,7 @@ const layout = () => {
     >
       <Stack.Screen name="(tabs)" />
       <Stack.Screen name="negocios" />
+      <Stack.Screen name="login" /> *
     </Stack>
   );
 };

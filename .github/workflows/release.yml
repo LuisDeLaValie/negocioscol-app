@@ -1,0 +1,45 @@
+name: Build Expo Android APK
+
+on:
+  push:
+    branches:
+      - main # Cambia a la rama que desees
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: "16.x"
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Authenticate with Expo
+        env:
+          EXPO_CLI_PASSWORD: ${{ secrets.EXPO_CLI_PASSWORD }}
+          EXPO_CLI_USERNAME: ${{ secrets.EXPO_CLI_USERNAME }}
+        run: |
+          echo "@YOUR_NPM_ACCOUNT:registry=https://registry.npmjs.org/" > .npmrc
+          echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" >> .npmrc
+          npm install -g expo-cli
+          expo login -u $EXPO_CLI_USERNAME -p $EXPO_CLI_PASSWORD
+
+      - name: Build APK
+        run: |
+          expo build:android --no-wait --non-interactive
+        env:
+          EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: apk
+          path: dist/*.apk
+n

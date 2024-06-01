@@ -1,4 +1,4 @@
-import { useLocalSearchParams } from "expo-router";
+import { useLocalSearchParams, useRouter } from "expo-router";
 import { View, StyleSheet, Dimensions, Alert } from "react-native";
 import {
   Avatar,
@@ -15,17 +15,22 @@ import { useEffect, useState } from "react";
 import Usuario from "../../models/usuario";
 import getUserApi from "../../helpers/getUserApi";
 import EditarAtributos from "../../components/EditarAtributos";
+import { ObtenerSesion, SerrarSesion } from "../../helpers/login";
 
 const settings = () => {
   const { id } = useLocalSearchParams();
   const [user, setuser] = useState<Usuario>();
 
   const getUser = async () => {
-    const userr = await getUserApi(2);
+    const userid = await ObtenerSesion();
+
+    const userr = await getUserApi(Number(userid));
     setuser(userr);
   };
 
-  const actualizar = () => {
+  const router = useRouter();
+
+  const actualizar = async () => {
     const myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
 
@@ -40,8 +45,10 @@ const settings = () => {
       redirect: "follow",
     };
 
+    const userid = await ObtenerSesion();
+
     fetch(
-      "https://api-negosioscol-production.up.railway.app/api/usuarios/1",
+      `https://api-negosioscol-production.up.railway.app/api/usuarios/${userid}`,
       requestOptions
     )
       .then((response) => response.text())
@@ -67,10 +74,7 @@ const settings = () => {
             width: Dimensions.get("window").width,
           }}
         >
-          <IconButton
-            icon="content-save-edit"
-            onPress={() => actualizar()}
-          />
+          <IconButton icon="content-save-edit" onPress={() => actualizar()} />
         </View>
 
         <Avatar.Image
@@ -111,9 +115,12 @@ const settings = () => {
       </View>
       <FAB
         icon="plus"
-        label="Crear local"
+        label="cerrar sesion"
         style={styles.fab}
-        onPress={() => console.log("Pressed")}
+        onPress={() => {
+          SerrarSesion();
+          router.replace("/login");
+        }}
       />
 
       {/* <Portal>
