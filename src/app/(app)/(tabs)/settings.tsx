@@ -31,6 +31,8 @@ const settings = () => {
   const router = useRouter();
 
   const actualizar = async () => {
+
+    const apiUrl = process.env.EXPO_PUBLIC_API_URL;
     const myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
 
@@ -48,7 +50,7 @@ const settings = () => {
     const userid = await ObtenerSesion();
 
     fetch(
-      `https://api-negosioscol-production.up.railway.app/api/usuarios/${userid}`,
+      `${apiUrl}/api/usuarios/${userid}`,
       requestOptions
     )
       .then((response) => response.text())

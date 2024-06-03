@@ -17,8 +17,8 @@ type Props = PropsWithChildren<{}>;
 const layout = () => {
   return (
     <Stack screenOptions={{ headerShown: false }} >
-      <Stack.Screen name="(app)" />
-      <Stack.Screen name="login" /> *
+      <Stack.Screen name="index" options={{title:""}} />
+      <Stack.Screen name="crear" options={{title:""}} /> 
     </Stack>
   );
 };

@@ -7,6 +7,8 @@ export type SearchResult = NegocioSearch | ServicioSearch | ProductoSearch;
 
 export const Buscar = async (buscar: string): Promise<SearchResult[]> => {
   try {
+
+    const apiUrl = process.env.EXPO_PUBLIC_API_URL;
     const myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
 
@@ -17,7 +19,7 @@ export const Buscar = async (buscar: string): Promise<SearchResult[]> => {
     };
 
     var respinse = await fetch(
-      `https://api-negosioscol-production.up.railway.app/api/buscar?buscar=${buscar}`,
+      `${apiUrl}/api/buscar?buscar=${buscar}`,
       requestOptions
     );
     var data = await respinse.text();

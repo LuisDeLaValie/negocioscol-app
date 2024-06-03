@@ -13,6 +13,8 @@ const RegisterScreen = () => {
   const [password, setPassword] = React.useState("");
 
   const registrar = () => {
+    const apiUrl = process.env.EXPO_PUBLIC_API_URL;
+
     const myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
 
@@ -33,7 +35,7 @@ const RegisterScreen = () => {
     };
 
     fetch(
-      "https://api-negosioscol-production.up.railway.app/api/usuarios",
+      `${apiUrl}/api/usuarios`,
       requestOptions
     )
       .then(async (response) => {
@@ -65,7 +67,7 @@ const RegisterScreen = () => {
         keyboardType="email-address"
       />
       <TextInput
-        label="Password"
+        label="Contraseña"
         value={password}
         onChangeText={(text) => setPassword(text)}
         style={styles.input}

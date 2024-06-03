@@ -39,6 +39,7 @@ export interface Negocio {
 
 export const GetNegocio = async (id: number): Promise<Negocio> => {
   try {
+    const apiUrl = process.env.EXPO_PUBLIC_API_URL;
     const myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
 
@@ -49,19 +50,19 @@ export const GetNegocio = async (id: number): Promise<Negocio> => {
     };
 
     var responseNegocio = await fetch(
-      `https://api-negosioscol-production.up.railway.app/api/negocios/${id}`,
+      `${apiUrl}/api/negocios/${id}`,
       requestOptions
     );
     var negocio = JSON.parse(await responseNegocio.text());
 
     var responseProductos = await fetch(
-      `https://api-negosioscol-production.up.railway.app/api/negocios/productos/${id}`,
+      `${apiUrl}/api/negocios/productos/${id}`,
       requestOptions
     );
     var producto = JSON.parse(await responseProductos.text());
 
     var responServicios = await fetch(
-      `https://api-negosioscol-production.up.railway.app/api/negocios/servisios/${id}`,
+      `${apiUrl}/api/negocios/servisios/${id}`,
       requestOptions
     );
     var servicios = JSON.parse(await responServicios.text());

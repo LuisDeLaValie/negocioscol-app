@@ -25,6 +25,8 @@ function LoginScreen() {
   const [password, setPassword] = useState("");
 
   const handleLogin = () => {
+
+    const apiUrl = process.env.EXPO_PUBLIC_API_URL;
     // Maneja el inicio de sesión aquí
     console.log("Login:", { username, password });
 
@@ -44,7 +46,7 @@ function LoginScreen() {
     };
 
     fetch(
-      "https://api-negosioscol-production.up.railway.app/api/login",
+      `${apiUrl}/api/login`,
       requestOptions
     )
       .then(async (response) => {
@@ -65,13 +67,13 @@ function LoginScreen() {
     <View style={styles.container}>
       <Text style={styles.title}>Login</Text>
       <TextInput
-        label="User"
+        label="Correo"
         value={username}
         onChangeText={(text) => setUsername(text)}
         style={styles.input}
       />
       <TextInput
-        label="Pass"
+        label="Contraseña"
         value={password}
         onChangeText={(text) => setPassword(text)}
         secureTextEntry
