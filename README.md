@@ -13,7 +13,9 @@
 
 **appi: [api-negosioscol](https://api-negosioscol-production.up.railway.app)**
 
-**app: [negocioscol.com](https://negocioscol.vercel.app/)**
+**app: [negocioscol app](https://job-artifacts.eascdn.net/production/db688c5a-1d9c-48c4-a830-64ba053ae2f3/b167ce15-3cb9-4044-82ec-2f691c69b11d/application-5b72dbbc-c2b7-4ee6-a116-7a2fe8b2b33d.apk?X-Goog-Algorithm=GOOG4-RSA-SHA256&X-Goog-Credential=www-production%40exponentjs.iam.gserviceaccount.com%2F20240604%2Fauto%2Fstorage%2Fgoog4_request&X-Goog-Date=20240604T184322Z&X-Goog-Expires=900&X-Goog-SignedHeaders=host&X-Goog-Signature=d62db77bc522fdfe7ca59af2d5ab6cfa46fff04120a93222792fb3230f72dd7c003923aa8cfc931cfdff3b339860f985e4641c9424c4c453e87e099137ed9ec0e5e1cae82fc58a69f4cce0e817c4773efcaa31f1689642505a9789e1a9d5b6d2daa837a5b68d5f344111755b44a97deffb292d41e334d8a195c9f947a4496763c41c36081012779e127574a261a62ebac2ad3f794790f94e071d2c2dc57c2f02c896735d2737ac3fef8bc25d5596780a1498d3a95c32364ddabc318663844482f4e4c21a33973619b67ef83b401adee3fb3d271bd41351495f2fa77c158f00efae85c0522c2ecbfdbb2da01db1d7fd829523057c7aff870bdbdf9fea7dc493a7)**
+
+
 
 
 - [NegociosCol APP](#negocioscol-app)
